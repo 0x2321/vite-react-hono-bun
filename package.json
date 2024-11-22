@@ -1,0 +1,26 @@
+{
+  "name": "vite-react-hono-bun",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "bun --bun run vite",
+    "build": "tsc && vite build && bun build ./src/server.tsx --outdir ./dist --target bun",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "@hono/vite-dev-server": "^0.17.0",
+    "@types/react": "^18.3.12",
+    "@types/react-dom": "^18.3.1",
+    "bun-types": "^1.1.36",
+    "typescript": "~5.6.2",
+    "vite": "^5.4.11"
+  },
+  "dependencies": {
+    "@hono/zod-validator": "^0.4.1",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-router-dom": "^6.28.0",
+    "zod": "^3.23.8"
+  }
+}
