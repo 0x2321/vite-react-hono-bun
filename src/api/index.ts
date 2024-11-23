@@ -1,7 +1,8 @@
 import {Hono} from "hono";
+import {pingRoutes} from "@/api/pong.ts";
 
 const apiRoutes = new Hono()
-  .get('/ping', c => c.text('Pong!'));
+  .route('/ping', pingRoutes);
 
 export {apiRoutes};
 export type ApiRouteType = typeof apiRoutes;

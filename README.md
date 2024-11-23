@@ -80,7 +80,7 @@ Example from `client.tsx`:
 import * as React from "react";
 import * as ReactDOM from "react-dom/client";
 import { Route, BrowserRouter, Routes } from "react-router-dom";
-import { Home, NotFound } from "./views";
+import { Home, NotFound } from "@/views";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
@@ -99,13 +99,25 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
 
 API routes are defined with **Hono** in `./src/api` and served through `server.tsx`.
 
+Example `./src/api/pong.ts`:
+
+```tsx  
+import {Hono} from "hono";
+
+const pingRoutes = new Hono()
+        .get('/', c => c.text('Pong!')); // use chaining, otherwise there will be type errors
+
+export {pingRoutes};
+```  
+
 Example `./src/api/index.ts`:
 
 ```tsx  
 import { Hono } from "hono";
+import {pingRoutes} from "@/api/pong.ts";
 
 const apiRoutes = new Hono()
-  .get('/ping', c => c.text('pong'));        // use chaining, otherwise there are type errors
+        .route('/ping', pingRoutes);    // uuse chaining, otherwise there will be type errors
 
 export { apiRoutes };
 export type ApiRouteType = typeof apiRoutes; // important to use the build-in api client!
@@ -116,7 +128,7 @@ export type ApiRouteType = typeof apiRoutes; // important to use the build-in ap
 An RPC client for API routes is provided in `./src/tools/api.ts`. Example usage:
 
 ```typescript  
-import { api } from './tools/api';
+import { api } from '@/tools/api';
 
 api.ping.$get().then(async resp => {
   if (resp.ok) {
