@@ -1,6 +1,7 @@
 import { defineConfig } from 'vite';
 import devServer from '@hono/vite-dev-server';
 import bunAdapter from '@hono/vite-dev-server/bun';
+import tsconfigPaths from "vite-tsconfig-paths";
 
 export default defineConfig({
   ssr: {
@@ -19,8 +20,11 @@ export default defineConfig({
     emptyOutDir: true,
     copyPublicDir: false,
   },
-  plugins: [devServer({
-    entry: './src/server.tsx',
-    adapter: bunAdapter,
-  })],
+  plugins: [
+    tsconfigPaths(),
+    devServer({
+      entry: './src/server.tsx',
+      adapter: bunAdapter,
+    })
+  ],
 });
