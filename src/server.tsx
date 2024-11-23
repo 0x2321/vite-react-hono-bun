@@ -39,6 +39,7 @@ server.use(csrf());               // uses default CSRF protection (https://hono.
  * This section imports the API endpoints that are declared in ./src/api/index.ts
  */
 server.route('/api', apiRoutes);
+server.use('/api/*', async c => c.text('Not found.', 404)); // fallback option
 
 /**
  * STATIC FILES
