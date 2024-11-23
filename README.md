@@ -117,7 +117,7 @@ import { Hono } from "hono";
 import {pingRoutes} from "@/api/pong.ts";
 
 const apiRoutes = new Hono()
-        .route('/ping', pingRoutes);    // uuse chaining, otherwise there will be type errors
+        .route('/ping', pingRoutes);    // use chaining, otherwise there will be type errors
 
 export { apiRoutes };
 export type ApiRouteType = typeof apiRoutes; // important to use the build-in api client!
