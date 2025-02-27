@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "bun --bun run vite",
-    "build": "tsc && vite build && bun build ./src/server.tsx --outdir ./dist --target bun",
+    "build": "tsc && vite build && bun build ./src/server.ts --outdir ./dist --target bun",
     "preview": "vite preview"
   },
   "devDependencies": {
