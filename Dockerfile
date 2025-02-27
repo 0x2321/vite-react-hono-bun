@@ -9,7 +9,6 @@ RUN bun install && \
 FROM oven/bun:latest
 WORKDIR /usr/src/app
 COPY --from=builder /build/dist .
-COPY ./public ./public
 
 ENV NODE_ENV=production
 USER bun

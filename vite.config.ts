@@ -8,22 +8,24 @@ export default defineConfig({
     external: ['react', 'react-dom'],
   },
   build: {
+    outDir: 'dist/static',
+    assetsDir: '_app',
     rollupOptions: {
-      input: ['./src/client.tsx'],
+      input: ['./index.html'],
       output: {
-        entryFileNames: 'static/client.js',
-        chunkFileNames: 'static/assets/[name]-[hash].js',
-        assetFileNames: 'static/assets/[name].[ext]',
+        entryFileNames: 'entry-[name]-[hash].js',
+        chunkFileNames: '[name]-[hash].js',
+        assetFileNames: '[name]-[hash].[ext]',
       },
     },
     minify: true,
     emptyOutDir: true,
-    copyPublicDir: false,
+    copyPublicDir: true,
   },
   plugins: [
     tsconfigPaths(),
     devServer({
-      entry: './src/server.tsx',
+      entry: './src/server.ts',
       adapter: bunAdapter,
     })
   ],

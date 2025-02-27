@@ -21,7 +21,7 @@ A modern template for web applications using Bun as the runtime. Designed for fa
 │   ├── api/          # API routes with Hono  
 │   ├── tools  
 │   │   └── api.ts    # RPC client for API routes  
-│   ├── server.tsx    # Hono server setup  
+│   ├── server.ts    # Hono server setup  
 │   ├── client.tsx    # React Router setup  
 ├── public/           # Static files (images, CSS, etc.)  
 ├── Dockerfile        # Docker configuration file
@@ -97,7 +97,7 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
 
 ## 🌐 API Routes
 
-API routes are defined with **Hono** in `./src/api` and served through `server.tsx`.
+API routes are defined with **Hono** in `./src/api` and served through `server.ts`.
 
 Example `./src/api/pong.ts`:
 
